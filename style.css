@@ -67,3 +67,11 @@ h1 {
 .tile-512 { background-color: #8b008b; color: #ffffff; } /* 暗洋红 */
 .tile-1024 { background-color: #800080; color: #ffffff; } /* 紫色 */
 .tile-2048 { background-color: #4b0082; color: #ffffff; } /* 靛青色 */
+
+canvas {
+    cursor: grab;
+}
+
+canvas:active {
+    cursor: grabbing;
+}

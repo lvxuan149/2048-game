@@ -106,11 +106,63 @@ function isGameOver() {
     return true;
 }
 
-document.addEventListener('keydown', event => {
+let isDragging = false;
+let startX, startY;
+let minSwipeDistance = 50; // 最小滑动距离
+
+function startDrag(e) {
+    isDragging = true;
+    startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    startY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+}
+
+function drag(e) {
+    if (!isDragging) return;
+    
+    let endX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    let endY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+    
+    let dx = endX - startX;
+    let dy = endY - startY;
+    
+    if (Math.abs(dx) > minSwipeDistance || Math.abs(dy) > minSwipeDistance) {
+        if (Math.abs(dx) > Math.abs(dy)) {
+            move(dx > 0 ? 'ArrowRight' : 'ArrowLeft');
+        } else {
+            move(dy > 0 ? 'ArrowDown' : 'ArrowUp');
+        }
+        isDragging = false; // 移动后结束拖拽
+    }
+}
+
+function endDrag() {
+    isDragging = false;
+}
+
+// 移除之前的键盘事件监听器
+document.removeEventListener('keydown', keydownHandler);
+
+// 添加新的键盘事件监听器
+function keydownHandler(event) {
     if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
         event.preventDefault();
         move(event.key);
     }
+}
+document.addEventListener('keydown', keydownHandler);
+
+// 添加鼠标事件监听器
+gameBoard.addEventListener('mousedown', startDrag);
+gameBoard.addEventListener('mousemove', drag);
+gameBoard.addEventListener('mouseup', endDrag);
+gameBoard.addEventListener('mouseleave', endDrag);
+
+// 添加触摸事件支持
+gameBoard.addEventListener('touchstart', startDrag);
+gameBoard.addEventListener('touchmove', (e) => {
+    e.preventDefault(); // 防止页面滚动
+    drag(e);
 });
+gameBoard.addEventListener('touchend', endDrag);
 
 initGame();
