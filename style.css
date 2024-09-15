@@ -1,0 +1,69 @@
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0e6ff; /* 浅紫色背景 */
+}
+
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(128, 0, 128, 0.1); /* 紫色阴影 */
+}
+
+h1 {
+    font-size: 48px;
+    color: #4b0082; /* 靛青色 */
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.score-container {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #8a2be2; /* 紫罗兰色 */
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    background-color: #e6e6fa; /* 淡紫色 */
+    border-radius: 12px;
+    padding: 15px;
+    width: 400px;
+    height: 400px;
+}
+
+.tile {
+    background-color: #d8bfd8; /* 蓟色 */
+    border-radius: 8px;
+    font-size: 28px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #4b0082; /* 靛青色 */
+    transition: all 0.1s ease-in-out;
+    box-shadow: 0 2px 8px rgba(128, 0, 128, 0.1); /* 紫色阴影 */
+    width: 100%;
+    height: 100%;
+    min-height: 80px;
+}
+
+.tile-2 { background-color: #e6e6fa; color: #4b0082; } /* 淡紫色 */
+.tile-4 { background-color: #d8bfd8; color: #4b0082; } /* 蓟色 */
+.tile-8 { background-color: #dda0dd; color: #ffffff; } /* 梅红色 */
+.tile-16 { background-color: #da70d6; color: #ffffff; } /* 兰花色 */
+.tile-32 { background-color: #ba55d3; color: #ffffff; } /* 中兰花紫 */
+.tile-64 { background-color: #9932cc; color: #ffffff; } /* 暗兰花紫 */
+.tile-128 { background-color: #8a2be2; color: #ffffff; } /* 紫罗兰色 */
+.tile-256 { background-color: #9400d3; color: #ffffff; } /* 暗紫色 */
+.tile-512 { background-color: #8b008b; color: #ffffff; } /* 暗洋红 */
+.tile-1024 { background-color: #800080; color: #ffffff; } /* 紫色 */
+.tile-2048 { background-color: #4b0082; color: #ffffff; } /* 靛青色 */
